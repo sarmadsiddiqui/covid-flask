@@ -1,0 +1,6 @@
+Flask==1.1.2
+pandas==1.0.3
+matplotlib==3.2.1
+requests==2.23.0
+numpy==1.18.2
+gunicorn==19.9.0
