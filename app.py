@@ -62,15 +62,15 @@ def ticks_log(x, pos):
     if x < 3:
         return '{:1.0f}'.format(10**x)
     elif x >= 6:
-        return '{:1.0f}M'.format(10**x/1e6)
-    return '{:1.0f}K'.format(10**x/1000)
+        return '{:1.1f}M'.format(10**x/1e6)
+    return '{:1.1f}K'.format(10**x/1000)
 
 
 def ticks_line(x, pos):
     # two args are the value and tick position
     if x < 1000:
         return '{:1.0f}'.format(x)
-    return '{:1.0f}K'.format(x/1000)
+    return '{:1.1f}K'.format(x/1000)
 
 
 def xticks_date(x, pos):
