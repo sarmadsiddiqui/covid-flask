@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- bootstrap code -->
+    <meta http-equiv="Content-Type" content="text/html" charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>-->
+    <!--<link rel="stylesheet" type="text/css" href="styles_home.css" /> -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles_boot.css')}}">
+    <link rel="shortcut icon" href="{{ url_for('static',filename='icon.ico')}}">
+
+
     <title> Covid-19 U.S. States Tracker
     </title>
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-    -->
-    <!--<link rel="stylesheet" type="text/css" href="styles_home.css" />
-    -->
-    <link rel=stylesheet type=text/css href='{{ url_for('static',filename='styles_home.css')}}'>
 
 </head>
 
 <body>
-<div id="all-content">
+<div class="container" id="all-content">
 
     <div id="header">
         <h1>Covid-19 U.S. States Tracker
@@ -27,23 +34,40 @@
     <div id="content">
         <br>
 
+
+        <style type="text/css">
+    .desc { display: none; }
+</style>
+
+        <script>
+$(document).ready(function() {
+    $("input[name=chart_type]").on( "change", function() {
+
+         var test = $(this).val();
+         $(".desc").hide();
+         $("#"+test).show();
+    } );
+});
+</script>
+
+
         <form id='states_info' method='post' action="/" >
 
             <p>
-                <strong>Select the type of figure:</strong>
+                <strong>Select the Type of Figure:</strong>
                 <br>
-                <input type="radio" name="chart_type" value="daily" checked>
-                <label for="chart_type">Total and daily statistics for a state</label>
+                <input type="radio" id='daily' name="chart_type" value="daily" checked>
+                <label for="daily">Total and daily statistics for a state</label>
                 <br>
-                <input type="radio" name="chart_type" value="comparison">
-                <label for="chart_type">Compare totals of up to five states</label>
+                <input type="radio" id='comp' name="chart_type" value="comparison">
+                <label for="comp">Compare totals of up to five states</label>
 
             </p>
 
 
             <p>
-                <label for = 'state1'> <strong>Select More Than 1 State For Comparison:</strong></label>
-                <br><br>
+                <strong>Select Up to Five States for Comparison:</strong>
+                <br>
                 <select id = 'state1' name="state1">
                     <option value="AL">Alabama</option>
                     <option value="AK">Alaska</option>
@@ -99,7 +123,9 @@
                     <option value="PR">Puerto Rico</option>
                 </select>
 
+            <div class="desc" id="comparison">
                 <select id = 'state2' name="state2">
+                    <option value=""></option>
                     <option value="AL">Alabama</option>
                     <option value="AK">Alaska</option>
                     <option value="AZ">Arizona</option>
@@ -153,8 +179,6 @@
                     <option value="WY">Wyoming</option>
                     <option value="PR">Puerto Rico</option>
                 </select>
-                <br>
-                <br>
                 <select id = 'state3' name="state3">
                     <option value="" selected></option>
                     <option value="AL">Alabama</option>
@@ -210,7 +234,8 @@
                     <option value="WY">Wyoming</option>
                     <option value="PR">Puerto Rico</option>
                 </select>
-
+                <br>
+                <br>
                 <select id = 'state4' name="state4">
                     <option value="" selected></option>
                     <option value="AL">Alabama</option>
@@ -322,6 +347,7 @@
                     <option value="WY">Wyoming</option>
                     <option value="PR">Puerto Rico</option>
                 </select>
+            </div>
             </p>
 
             <p>
@@ -376,12 +402,16 @@
 </div>
 
 <div id="footer">
-    <p> Updated April 17th, 2020. </p>
+    <p> Updated April 23rd, 2020. </p>
 </div>
 
 </div>
 
 
+
+<!--<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 </body>
 </html>
